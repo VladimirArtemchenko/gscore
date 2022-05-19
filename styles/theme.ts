@@ -3,7 +3,7 @@ export const baseTheme = {
         primary: "rgba(24, 24, 24, 1)",
         secondary: 'rgba(39, 39, 39, 1)',
         success: 'rgba(252, 88, 66, 1)',
-
+        text: '#C7C7C7',
         active: 'rgba(5, 193, 104, 1)',
         hold: 'rgba(255, 158, 44, 1)',
 
@@ -18,10 +18,10 @@ export const baseTheme = {
 
     // in px
     sizes: {
-        header: { height: 122 },
-        container: { width: 1200 },
-        footer: { height: 128 },
-        modal: { width: 540 },
+        header: {height: 122},
+        container: {width: 1200},
+        footer: {height: 128},
+        modal: {width: 540},
     },
 
     // in ms
