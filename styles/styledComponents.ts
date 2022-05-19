@@ -59,7 +59,7 @@ export const FooterLine = styled.span`
 `
 export const FooterBottomContainer = styled.footer`
   max-width: 100%;
-  margin: 0 0 42px 68px;
+  margin: 0 86px 42px 68px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
