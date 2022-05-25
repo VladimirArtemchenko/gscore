@@ -1,7 +1,11 @@
-import {NextPage} from "next";
+import React from 'react';
+import { NextPage } from 'next';
+import PricesCards from '../components/PricesCards/PricesCards';
 
-const Home:NextPage =()=>(
-    <h1>Home</h1>
-)
+const Home: NextPage = () => (
 
-export default Home
+  <PricesCards />
+
+);
+
+export default Home;
