@@ -1,6 +1,6 @@
-const Cookies=()=>{
-    return (
-        <p>Cookies</p>
-    )
-}
-export default Cookies
+import React from 'react';
+
+const Cookies = () => (
+  <p>Cookies</p>
+);
+export default Cookies;
