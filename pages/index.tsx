@@ -1,10 +1,23 @@
 import React from 'react';
-import { NextPage } from 'next';
 import PricesCards from '../components/PricesCards/PricesCards';
+import { products } from './api/rest/products';
+import { ProductsListType } from '../store/prices/types';
 
-const Home: NextPage = () => (
+export async function getStaticProps() {
+  const response = await products();
+  console.log(response.data);
+  return {
+    props: { productsList: response.data },
+  };
+}
 
-  <PricesCards />
+interface HomeProps {
+    productsList: ProductsListType[]
+}
+
+const Home: React.FC<HomeProps> = ({ productsList }) => (
+
+  <PricesCards productsList={productsList} />
 
 );
 

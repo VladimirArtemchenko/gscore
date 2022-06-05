@@ -1,5 +1,5 @@
 import React from 'react';
-import { FooterSocialContainer, Root, SocialIcon } from '../../styles/styledComponents';
+import { FooterSocialContainer, Root, SocialIcon } from './index';
 
 const Social = () => (
   <Root>

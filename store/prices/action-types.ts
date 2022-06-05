@@ -1,3 +1,3 @@
-export type GetProducts = {
-    data: any
-}
+import { ProductsListType } from './types';
+
+export type GetProducts = ProductsListType[]

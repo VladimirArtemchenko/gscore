@@ -1,30 +1,43 @@
 import React, { useEffect } from 'react';
-import PricesCard from '../PriceCard';
-import { Flex, Root } from '../../styles/styledComponents';
-import { products } from '../../pages/api/rest/products';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import {
+  ContactLink,
+  Flex,
+  Root,
+  TextHome,
+  Title,
+} from './index';
+import PriceCard from '../PriceCard';
+import { ProductsListType } from '../../store/prices/types';
+import { useAppDispatch } from '../../hooks';
 import { getProducts } from '../../store/prices/reducer';
 
-function PricesCards() {
-  const productsList = useAppSelector((state) => state.productsList.productsList);
+interface PricesCardsProps {
+    productsList: ProductsListType[]
+}
+
+const PricesCards: React.FC<PricesCardsProps> = ({ productsList }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    (async () => {
-      const data = await products();
-      console.log(data);
-      dispatch(getProducts({ data }));
-    })();
+    dispatch(getProducts(productsList));
   }, []);
 
   return (
     <Root>
+      <Title>Get started with Gscore today!</Title>
       <Flex>
-        {productsList.map((item) => (
-          <PricesCard key={item.id} price={item.prices[0].price} sitesCount={item.sitesCount} />
+        {productsList.map((item, index) => (
+          <PriceCard
+            key={item.id}
+            id={index}
+            price={item.prices[0].price}
+            sitesCount={item.sitesCount}
+          />
         ))}
       </Flex>
+      <TextHome>Have more than 10 sites?</TextHome>
+      <ContactLink href="mailto:voartemchenko@gmail.com">Contact Us</ContactLink>
     </Root>
   );
-}
+};
 
 export default PricesCards;
