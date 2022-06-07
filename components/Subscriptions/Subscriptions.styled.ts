@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { baseTheme } from '../../styles/theme';
-import arrow from '../../public/arrow.svg';
 
 export const Root = styled.div`
-  padding: 0 0 0 87px;
+  padding: 0 0 120px 87px;
   max-width: 1440px;
 `;
 export const Title = styled.h1`
@@ -19,6 +18,13 @@ export const Flex = styled.div`
   box-sizing: border-box;
   width: 100%;
   display: flex;
+`;
+export const BottomContainer = styled(Flex)`
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 export const TitleContainer = styled(Flex)`
   margin: 28px 0 32px;
@@ -45,9 +51,11 @@ export const ButtonsContainer = styled(Flex)`
   gap: 12px;
 `;
 export const CodesContainer = styled(Flex)`
-  padding: 0 86px 120px 0;
+  padding: 0 86px 48px 0;
   flex-direction: column;
   gap: 32px;
+`;
+export const HoldForm = styled.form`
 `;
 export const LeftButton = styled.img <{ $isActive: boolean }>`
   opacity: ${(props) => (props.$isActive ? 1 : 0.6)};
@@ -76,7 +84,12 @@ export const Text = styled.p`
   font-size: 22px;
   line-height: 28px;
 `;
-export const UpgradeButton = styled.button`
+export const BottomText = styled.p`
+  margin: 0;
+  font-size: 20px;
+  line-height: 22px;
+`;
+export const PrimaryButton = styled.button`
   border: none;
   padding: 0;
   box-sizing: border-box;

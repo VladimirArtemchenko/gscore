@@ -3,7 +3,7 @@ export const baseTheme = {
     base: '#ffffff',
     primary: 'rgba(24, 24, 24, 1)',
     secondary: 'rgba(39, 39, 39, 1)',
-    neutral: '#969696',
+    neutral: 'rgba(150, 150, 150, 1)',
     success: 'rgba(252, 88, 66, 1)',
     inactive: 'rgba(252, 88, 66, 1)',
     text: '#C7C7C7',

@@ -28,7 +28,8 @@ const PricesCards: React.FC<PricesCardsProps> = ({ productsList }) => {
         {productsList.map((item, index) => (
           <PriceCard
             key={item.id}
-            id={index}
+            id={item.id}
+            index={index}
             price={item.prices[0].price}
             sitesCount={item.sitesCount}
           />

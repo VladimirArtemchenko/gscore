@@ -24,23 +24,14 @@ const SignUpForm = () => {
     },
   });
 
-  const onSubmit = (data: { username: string; email: string; password: string }) => {
-    (async () => {
-      await signUp(data)
-        .then((response) => {
-          if (response) {
-            signIn({ email: data.email, password: data.password })
-              .then((res) => {
-                dispatch(setToken(res.data));
-                router.push('/verification/checkout');
-              });
-            reset();
-          }
-        })
-        .catch((error) => {
-          alert(error.response.data.message);
-        });
-    })();
+  const onSubmit = async (data: { username: string; email: string; password: string }) => {
+    const response = await signUp(data);
+    if (response) {
+      await signIn({ email: data.email, password: data.password });
+      dispatch(setToken(response.data));
+      await router.push('/verification/checkout');
+      reset();
+    }
   };
 
   return (

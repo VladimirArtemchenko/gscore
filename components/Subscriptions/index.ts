@@ -9,4 +9,9 @@ export {
   RightButton,
   Slider,
   TitleContainer,
+  BottomText,
+  BottomContainer,
+  PrimaryButton,
+  CodesContainer,
+  HoldForm,
 } from './Subscriptions.styled';

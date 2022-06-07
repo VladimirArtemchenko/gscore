@@ -20,7 +20,10 @@ const Footer: React.FC<FooterProps> = () => (
     <FooterContainer>
       <FooterColumn>
         <Logo src="/logo.svg" />
-        <FooterDescription>Ut enim ad minim veniam quis nostrud exercitation ea commodo</FooterDescription>
+        <FooterDescription>
+          Ut enim ad minim veniam quis
+          nostrud exercitation ea commodo
+        </FooterDescription>
       </FooterColumn>
       <FooterLine />
       <FooterBottomContainer>

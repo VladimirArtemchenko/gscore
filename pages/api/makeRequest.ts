@@ -12,4 +12,6 @@ export default ({
   headers,
   params,
   data,
+}).catch((error) => {
+  alert(error.response.data.message);
 });

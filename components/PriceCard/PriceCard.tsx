@@ -14,14 +14,18 @@ import {
 } from './index';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { setCurrentProductId } from '../../store/currentProductId/reducer';
+import { setCurrentProductIndex } from '../../store/currentProductIndex/reducer';
 
 export interface PricesCardProps {
     price: string,
     sitesCount: number
     id: number
+    index: number
 }
 
-const PricesCard: React.FC<PricesCardProps> = ({ price, sitesCount, id }) => {
+const PricesCard: React.FC<PricesCardProps> = ({
+  price, sitesCount, id, index,
+}) => {
   const [isHovered, setHovered] = useState(false);
   const dispatch = useAppDispatch();
   const token = useAppSelector((state) => state.token.userInfo.token);
@@ -30,9 +34,8 @@ const PricesCard: React.FC<PricesCardProps> = ({ price, sitesCount, id }) => {
   };
 
   const handleClick = () => {
-    const productID = id;
     dispatch(setCurrentProductId({ id }));
-    console.log(productID);
+    dispatch(setCurrentProductIndex({ index }));
   };
 
   return (

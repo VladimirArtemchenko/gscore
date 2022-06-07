@@ -12,7 +12,6 @@ const Header = () => {
 
   const handlerMenuOpen = () => {
     setMenuActive(!isMenuOpen);
-    // console.log('s');
   };
 
   return (

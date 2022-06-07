@@ -56,7 +56,7 @@ export const StatusContainer = styled(Flex)`
 
 export const Checkbox = styled.input`
   margin: 74px 48px 0 32px;
-  width: 28px;
+  width: 100px;
   height: 28px;
   flex-direction: column;
   border-radius: 7px;
@@ -98,7 +98,7 @@ export const ColoredText = styled.div <{ $color: string }>`
   font-weight: 700;
   font-size: 22px;
   line-height: 28px;
-  color: ${(props) => (baseTheme.colors[props.$color])};
+  color: ${(props) => (baseTheme.colors[props.$color])}; //
 `;
 export const ActivateButton = styled.button`
   box-sizing: border-box;

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { bool } from 'prop-types';
+import React from 'react';
+
 import {
   Root,
   Flex,
@@ -18,6 +18,7 @@ export interface PricesCardProps {
     onSetCurrentIndex: (value: number) => void
     onSetContentIndex: (value: number) => void
     index: number;
+    currentProductId: number
 
 }
 
@@ -31,6 +32,7 @@ const PricesCard: React.FC<PricesCardProps> = ({
   index,
   item,
   onSetContentIndex,
+  currentProductId,
 }) => {
   const handleDate = () => {
     const newDate = new Date(+date * 1000);

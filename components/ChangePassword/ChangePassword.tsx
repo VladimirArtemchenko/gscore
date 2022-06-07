@@ -20,19 +20,12 @@ const ChangePassword = () => {
     },
   });
 
-  const onSubmit = (data: { currentPassword: string; newPassword: string }) => {
-    (async () => {
-      await changeUserPassword(data, token)
-        .then((response) => {
-          if (response) {
-            alert('Пароль успешно сменен');
-            reset();
-          }
-        })
-        .catch((error) => {
-          alert(error.response.data.message);
-        });
-    })();
+  const onSubmit = async (data: { currentPassword: string; newPassword: string }) => {
+    const response = await changeUserPassword(data, token);
+    if (response) {
+      alert('Пароль успешно сменен');
+      reset();
+    }
   };
 
   return (

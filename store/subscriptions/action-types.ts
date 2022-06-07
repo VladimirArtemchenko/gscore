@@ -9,3 +9,6 @@ export type ActivateCode = {
     subscribeId: number
     userId: number
 }
+export type ManageCode = {
+    codes: ActivateCode[]
+}

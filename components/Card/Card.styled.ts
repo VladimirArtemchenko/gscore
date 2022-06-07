@@ -3,11 +3,6 @@ import { baseTheme } from '../../styles/theme';
 
 export const Root = styled.div<{ $isActive: boolean }>`
   opacity: ${(props) => (props.$isActive ? 1 : 0.6)};
-  //overflow: hidden;
-  //padding: 0 0 0 87px;
-  //max-width: 1440px;
-  //box-sizing: border-box;
-  //margin: 0 auto 0;
 `;
 export const Title = styled.h1`
   margin: 0 0 32px;
