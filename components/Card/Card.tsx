@@ -52,10 +52,6 @@ const PricesCard: React.FC<PricesCardProps> = ({
         <Flex>
           <Text>
             Gscore
-            $
-            {item.productId}
-            $
-            {item.codes[0].subscribeId}
           </Text>
           <ColoredText
             $isActive={status.toLocaleLowerCase() === 'active'}

@@ -27,10 +27,12 @@ const SignUpForm = () => {
   const onSubmit = async (data: { username: string; email: string; password: string }) => {
     const response = await signUp(data);
     if (response) {
-      await signIn({ email: data.email, password: data.password });
-      dispatch(setToken(response.data));
-      await router.push('/verification/checkout');
-      reset();
+      const userInfo = await signIn({ email: data.email, password: data.password });
+      if (userInfo) {
+        dispatch(setToken(userInfo.data));
+        await router.push('/verification/checkout');
+        reset();
+      }
     }
   };
 
