@@ -24,11 +24,13 @@ import { deleteCodeId, setCodeId } from '../../store/activeCodesIds/reducer';
 export interface PricesCardProps {
     code: CodesType
     isInactive: boolean
+    isHolded: boolean
 }
 
 const Code: React.FC<PricesCardProps> = ({
   code,
   isInactive,
+  isHolded,
 
 }) => {
   const {
@@ -67,8 +69,15 @@ const Code: React.FC<PricesCardProps> = ({
   return (
     <Root>
       <Container>
-        <Checkbox onChange={handleCheck} id={code.code} type="checkbox" />
-        <LabelCheckbox />
+        {isHolded
+          ? (
+            <div>
+              {isChecked ? <Checkbox onClick={handleCheck} src="/activeCheckbox.svg" />
+                : <Checkbox onClick={handleCheck} src="/emptyCheckbox.svg" />}
+            </div>
+          )
+          : <Checkbox src="/disabledCheckbox.svg" />}
+
         <Form onSubmit={handleSubmit(onSubmit)}>
           <LicenseContainer>
             <Label>License code</Label>
@@ -93,7 +102,6 @@ const Code: React.FC<PricesCardProps> = ({
         </StatusContainer>
       </Container>
     </Root>
-
   );
 };
 

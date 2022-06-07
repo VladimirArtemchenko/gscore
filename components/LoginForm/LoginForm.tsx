@@ -28,8 +28,10 @@ const LoginForm = () => {
     if (response) {
       dispatch(setToken(response.data));
       const subscriptionsList = await subscribe(response.data.token);
-      dispatch(getSubscriptions(subscriptionsList.data));
-      reset();
+      if (subscriptionsList) {
+        dispatch(getSubscriptions(subscriptionsList.data));
+        reset();
+      }
       await router.push('/verification/checkout');
     }
   };

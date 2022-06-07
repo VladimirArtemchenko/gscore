@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { homedir } from 'os';
 import {
@@ -31,6 +31,11 @@ const Subscriptions = () => {
   const dispatch = useAppDispatch();
   const [currentIndex, setCurrentIndex] = useState(1);
   const [contentIndex, setContentIndex] = useState(0);
+  const [isHolded, setIsHolded] = useState(false);
+  useEffect(() => {
+    setIsHolded((subscriptionsList[contentIndex].codes.length
+            > subscriptionsList[contentIndex].product.sitesCount));
+  });
   const subscriptionsList = useAppSelector(
     (state) => state.subscriptionsList.subscriptionsList,
   );
@@ -110,20 +115,20 @@ const Subscriptions = () => {
       <CodesContainer>
         {subscriptionsList && subscriptionsList[contentIndex].codes.map((code) => (
           <Code
+            isHolded={isHolded}
             key={code.id}
             isInactive={code.status.toLocaleLowerCase() === 'inactive'}
             code={code}
           />
         ))}
       </CodesContainer>
-      {(subscriptionsList[contentIndex].codes.length
-                > subscriptionsList[contentIndex].product.sitesCount)
-            && (
-            <BottomContainer>
-              <BottomText>Select the domains you want to keep</BottomText>
-              <PrimaryButton onClick={handleActivateCodes}>Confirm</PrimaryButton>
-            </BottomContainer>
-            )}
+      {isHolded
+                && (
+                <BottomContainer>
+                  <BottomText>Select the domains you want to keep</BottomText>
+                  <PrimaryButton onClick={handleActivateCodes}>Confirm</PrimaryButton>
+                </BottomContainer>
+                )}
     </Root>
   );
 };

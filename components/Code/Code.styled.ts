@@ -54,13 +54,11 @@ export const StatusContainer = styled(Flex)`
   background-color: ${baseTheme.colors.secondary};
 `;
 
-export const Checkbox = styled.input`
+export const Checkbox = styled.img`
   margin: 74px 48px 0 32px;
-  width: 100px;
+  width: 28px;
   height: 28px;
-  flex-direction: column;
-  border-radius: 7px;
-  color: ${baseTheme.colors.active};
+
 `;
 export const LicenseCode = styled.input`
   background: #393939;
@@ -119,20 +117,5 @@ export const ActivateButton = styled.button`
 
   :hover {
     opacity: 0.6;
-  }
-`;
-export const LabelCheckbox = styled.label`
-  :before {
-    color: white;
-    display: inline-block;
-    border: 1px solid #000;
-    font-size: 20px;
-    line-height: 22px;
-    margin: -5px 5px 0 0;
-    height: 20px;
-    width: 20px;
-    text-align: center;
-    vertical-align: middle;
-    transition: color ease .3s;
   }
 `;
