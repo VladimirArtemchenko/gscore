@@ -1,6 +1,4 @@
 import React from 'react';
-
-import axios from 'axios';
 import {
   Root,
   Flex,
@@ -8,7 +6,6 @@ import {
   SubmitButton, Text, ThinText, SecondFlex, SmallText, Container, ColoredText,
 } from './index';
 import { SubscriptionsListType } from '../../store/subscriptions/types';
-import makeRequest from '../../pages/api/makeRequest';
 
 export interface PricesCardProps {
     item: SubscriptionsListType

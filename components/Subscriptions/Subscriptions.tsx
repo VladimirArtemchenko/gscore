@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { homedir } from 'os';
-import { number } from 'prop-types';
 import {
   Root,
   Title,
@@ -17,7 +16,6 @@ import {
   PrimaryButton,
   CodesContainer,
   ConfirmButton,
-
 } from './index';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import Card from '../Card';
