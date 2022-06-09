@@ -18,7 +18,7 @@ export const Container = styled.div <{ $isHovered: boolean }>`
   height: 612px;
   box-shadow: 0px 8px 28px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
-  @media ${baseTheme.media.laptop} {
+  @media ${baseTheme.media.mobileL} {
     width: 96%;
     padding: 21px 24px;
     margin: 0px auto;
