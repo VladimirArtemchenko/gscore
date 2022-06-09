@@ -3,4 +3,5 @@ export { default } from './Verification';
 export {
   Root,
   ButtonsContainer,
+  Text,
 } from './Verification.styled';

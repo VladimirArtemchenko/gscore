@@ -35,6 +35,7 @@ export const BottomContainer = styled(Flex)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 `;
 export const TitleContainer = styled(Flex)`
   margin: 28px 0 32px;
@@ -48,7 +49,8 @@ export const TitleContainer = styled(Flex)`
     font-size: 28px;
     line-height: 40px;
     align-items: center;
-    margin: 0px 0 32px;
+    margin: 0 0 32px;
+
   }
 `;
 export const Slider = styled.div`
@@ -83,10 +85,8 @@ export const CodesContainer = styled(Flex)`
   @media ${baseTheme.media.laptopL} {
     padding: 0px 16px 0;
   }
-  @media ${baseTheme.media.laptop} {
+  @media ${baseTheme.media.tablet} {
     gap: 24px;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-around;
   }
 `;
@@ -170,14 +170,9 @@ export const PrimaryButton = styled.button`
 
 `;
 export const ConfirmButton = styled(PrimaryButton)`
-  border: none;
-  padding: 0;
-  box-sizing: border-box;
-  width: 152px;
-  height: 72px;
+  margin: 48px 86px 0 0;
   box-shadow: 0 10px 28px rgba(252, 88, 66, 0.2);
   border-radius: 6px;
-  margin: 0 86px 0 0;
   cursor: pointer;
   background-color: ${baseTheme.colors.success};
   color: ${baseTheme.colors.base};
@@ -191,7 +186,7 @@ export const ConfirmButton = styled(PrimaryButton)`
     opacity: 0.6;
   }
 
-  @media ${baseTheme.media.tablet} {
+  @media ${baseTheme.media.laptop} {
     width: 343px;
     height: 72px;
     font-size: 16px;

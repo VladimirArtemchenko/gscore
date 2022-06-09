@@ -14,6 +14,9 @@ export const Text = styled.div`
   line-height: 22px;
   text-align: center;
   color: ${baseTheme.colors.base};
+  @media ${baseTheme.media.tablet} {
+    display: none;
+  }
 `;
 export const ChoiceButton = styled.div <{ $isActive: boolean }>`
   box-sizing: border-box;
@@ -26,5 +29,10 @@ export const ChoiceButton = styled.div <{ $isActive: boolean }>`
 
   :hover {
     opacity: 0.6;
+  }
+
+  @media ${baseTheme.media.tablet} {
+    width: 90px;
+    height: 8px;
   }
 `;

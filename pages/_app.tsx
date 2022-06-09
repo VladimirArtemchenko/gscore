@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import '../styles/globals.css';
 import '../styles/index.css';
 import type { AppProps } from 'next/app';
@@ -10,12 +9,6 @@ import Layout from '../components/Layout/Layout';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <Root>
-    <Head>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
-        rel="stylesheet"
-      />
-    </Head>
     <Layout><Header /></Layout>
     <Component {...pageProps} />
     <Footer />

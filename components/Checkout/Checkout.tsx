@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
   Root,
@@ -32,7 +32,13 @@ const Checkout = () => {
   const token = useAppSelector(
     (state) => (state.token.userInfo.token),
   );
-
+  useEffect(() => {
+    if (localStorage.getItem('isLogin') === 'true') {
+      return;
+    }
+    alert('Пожалуйста зарегистрируйтесь');
+    router.push('/verification');
+  });
   const handlePurchase = async () => {
     if (isUpdateMode) {
       await changeSubscribe(token, {

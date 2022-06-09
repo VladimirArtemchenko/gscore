@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
   Root,
@@ -26,6 +26,14 @@ const Subscribe = () => {
   const token = useAppSelector(
     (state) => (state.token.userInfo.token),
   );
+
+  useEffect(() => {
+    if (localStorage.getItem('isLogin') === 'true') {
+      return;
+    }
+    alert('Пожалуйста зарегистрируйтесь');
+    router.push('/verification');
+  });
 
   const handleSubscribe = async () => {
     const response = await subscribe(token);

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   ButtonsContainer,
   Root,
+  Text,
 } from './index';
 import RegistrationButtons from '../RegistrationButtons';
 import { useAppSelector } from '../../hooks';
@@ -14,6 +15,7 @@ const VerificationMenu: React.FC<VerificationMenuProps> = ({ index }) => {
   const verificationMenu = useAppSelector((state) => state.verificationMenu.verificationMenu);
   return (
     <Root>
+      <Text>{verificationMenu[index].label}</Text>
       <ButtonsContainer>
         {verificationMenu.map((menuItem, currentIndex) => (
           <RegistrationButtons

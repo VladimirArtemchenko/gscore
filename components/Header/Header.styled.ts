@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { baseTheme } from '../../styles/theme';
 
 export const Root = styled.div`
+  position: relative;
   box-sizing: border-box;
   margin: 0;
   padding: 0;

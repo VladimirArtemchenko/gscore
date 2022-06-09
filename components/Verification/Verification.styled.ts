@@ -13,9 +13,23 @@ export const ButtonsContainer = styled.div`
   margin: 32px auto 64px;
   max-width: 620px;
   min-height: 42px;
-  flex-wrap: wrap;
   @media ${baseTheme.media.tablet} {
-    gap: 20px;
-    justify-content: space-around;
+    max-width: 320px;
+    margin: 0 auto 64px;
+  }
+`;
+export const Text = styled.div`
+  max-width: 320px;
+  display: none;
+  font-family: 'THICCCBOI', serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 22px;
+  color: ${baseTheme.colors.base};
+  @media ${baseTheme.media.tablet} {
+    display: flex;
+    margin: 32px auto 0;
+
   }
 `;

@@ -41,14 +41,10 @@ export const Title = styled.h1`
   color: ${baseTheme.colors.base};
 `;
 export const Flex = styled.div`
+  padding: 0 86px 0;
   box-sizing: border-box;
   display: flex;
   gap: 20px;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
-  @media ${baseTheme.media.laptopL} {
-    //row-gap: 20px;
-    justify-content: space-around;
-
-  }
 `;

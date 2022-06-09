@@ -12,30 +12,37 @@ export const Title = styled.h1`
   line-height: 54px;
   color: ${baseTheme.colors.base};
 `;
+
 export const Flex = styled.div`
   display: flex;
-  @media ${baseTheme.media.laptop} {
+  @media ${baseTheme.media.tablet} {
     flex-direction: column;
   }
 `;
+
 export const Form = styled.form`
   display: flex;
   width: 79%;
   justify-content: flex-start;
   @media ${baseTheme.media.laptop} {
+    min-width: 70%;
+  }
+  @media ${baseTheme.media.tablet} {
     flex-direction: column;
+    width: 100%;
   }
 `;
 
 export const Container = styled(Flex)`
   min-width: 890px;
-  width: 100%;
   height: 153px;
   border-radius: 12px;
   background: ${baseTheme.colors.secondary};
   @media ${baseTheme.media.laptop} {
-    height: 338px;
     min-width: 343px;
+  }
+  @media ${baseTheme.media.tablet} {
+    height: 338px;
     padding: 24px 20px 32px;
     position: relative;
   }
@@ -45,22 +52,24 @@ export const LicenseContainer = styled(Flex)`
   margin: 24px 28px 31px 0;
   flex-direction: column;
   background: ${baseTheme.colors.secondary};
-  @media ${baseTheme.media.laptop} {
+  @media ${baseTheme.media.tablet} {
     margin: 0;
-    width: 80%;
+    width: 100%;
   }
 `;
 export const LinkContainer = styled(Flex)<{ $isInactive: boolean }>`
   margin: 24px 56px 31px 0;
-  width: ${(props) => (props.$isInactive ? '45%' : '62%')};
+  max-width: ${(props) => (props.$isInactive ? '45%' : '62%')};
+  width: 100%;
   flex-direction: column;
   border-radius: 5px;
   background: ${baseTheme.colors.secondary};
   @media ${baseTheme.media.laptopL} {
     margin: 24px 20px 31px 0;
   }
-  @media ${baseTheme.media.laptop} {
+  @media ${baseTheme.media.tablet} {
     margin: 0;
+    max-width: 100%;
   }
 `;
 export const StatusContainer = styled(Flex)`
@@ -68,7 +77,7 @@ export const StatusContainer = styled(Flex)`
   max-width: 20%;
   flex-direction: column;
   border-radius: 5px;
-  @media ${baseTheme.media.laptop} {
+  @media ${baseTheme.media.tablet} {
     display: none;
 `;
 
@@ -76,7 +85,7 @@ export const Checkbox = styled.img`
   margin: 74px 48px 0 32px;
   width: 28px;
   height: 28px;
-  @media ${baseTheme.media.laptop} {
+  @media ${baseTheme.media.tablet} {
     margin: 14px 20px 0 0;
   }
 `;
@@ -98,17 +107,17 @@ export const LicenseCode = styled.input`
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  @media ${baseTheme.media.laptop} {
-    width: 303px;
+  @media ${baseTheme.media.tablet} {
+    max-width: 100%;
+    min-width: 303px;
     padding: 0 97px 0 24px;
   }
 `;
 export const Domain = styled(LicenseCode)`
   max-width: 620px;
   padding: 0 34px 0 24px;
-  min-width: 200px;
-  @media ${baseTheme.media.laptop} {
-    width: 303px;
+  min-width: 152px;
+  @media ${baseTheme.media.tablet} {
     padding: 0 31px 0 24px;
   }
 
@@ -121,7 +130,7 @@ export const Label = styled.label`
   line-height: 18px;
   color: ${baseTheme.colors.neutral};
   margin: 0 0 12px 0;
-  @media ${baseTheme.media.laptop} {
+  @media ${baseTheme.media.tablet} {
     margin: 24px 0 12px;
   }
 `;
@@ -140,7 +149,7 @@ export const TopColoredText = styled.div <{ $color: string }>`
   font-size: 22px;
   line-height: 28px;
   color: ${(props) => (baseTheme.colors[props.$color])};
-  @media ${baseTheme.media.laptop} {
+  @media ${baseTheme.media.tablet} {
     position: absolute;
     display: flex;
     top: 34px;
@@ -171,7 +180,7 @@ export const ActivateButton = styled.button`
   @media ${baseTheme.media.laptopL} {
     margin: 57px 20px 20px -2px;
   }
-  @media ${baseTheme.media.laptop} {
+  @media ${baseTheme.media.tablet} {
     position: absolute;
     top: 20px;
     right: 20px;

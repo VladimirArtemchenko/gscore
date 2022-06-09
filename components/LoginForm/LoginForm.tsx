@@ -27,6 +27,7 @@ const LoginForm = () => {
     const response = await signIn(data);
     if (response) {
       dispatch(setToken(response.data));
+      localStorage.setItem('isLogin', 'true');
       const subscriptionsList = await subscribe(response.data.token);
       if (subscriptionsList) {
         dispatch(getSubscriptions(subscriptionsList.data));

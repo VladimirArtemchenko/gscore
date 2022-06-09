@@ -9,8 +9,8 @@ import { logout } from '../../store/token/reducer';
 import { MenuIcon } from '../Header';
 
 interface MenuProps {
-    // eslint-disable-next-line no-unused-vars
-    onSetMenuActive: (value: boolean) => void
+  // eslint-disable-next-line no-unused-vars
+  onSetMenuActive: (value: boolean) => void
 }
 
 const Menu: React.FC<MenuProps> = ({ onSetMenuActive }) => {
@@ -19,6 +19,7 @@ const Menu: React.FC<MenuProps> = ({ onSetMenuActive }) => {
   const router = useRouter();
   const handlerLogout = () => {
     dispatch(logout());
+
     onSetMenuActive(false);
     router.push('/');
   };
@@ -57,22 +58,22 @@ const Menu: React.FC<MenuProps> = ({ onSetMenuActive }) => {
           <MenuIcon $isMenuOpen={isMenuOpen} src="/menuIcon.svg" />
         </Flex>
         {isMenuOpen
-                    && (
-                    <FlexColumn>
-                      <MenuItem onClick={handlerSettings}>
-                        <MenuImage src="/settings.svg" />
-                        <TextMobileGrey>
-                          Settings
-                        </TextMobileGrey>
-                      </MenuItem>
-                      <MenuItem onClick={handlerLogout}>
-                        <MenuImage src="/logout.svg" />
-                        <TextMobileGrey>
-                          Logout
-                        </TextMobileGrey>
-                      </MenuItem>
-                    </FlexColumn>
-                    )}
+              && (
+              <FlexColumn>
+                <MenuItem onClick={handlerSettings}>
+                  <MenuImage src="/settings.svg" />
+                  <TextMobileGrey>
+                    Settings
+                  </TextMobileGrey>
+                </MenuItem>
+                <MenuItem onClick={handlerLogout}>
+                  <MenuImage src="/logout.svg" />
+                  <TextMobileGrey>
+                    Logout
+                  </TextMobileGrey>
+                </MenuItem>
+              </FlexColumn>
+              )}
         <MenuLayout>
           <MenuItem onClick={handlerSettings}>
             <MenuImage src="/settings.svg" />
