@@ -1,5 +1,6 @@
 import React from 'react';
 
+import axios from 'axios';
 import {
   Root,
   Flex,
@@ -7,6 +8,7 @@ import {
   SubmitButton, Text, ThinText, SecondFlex, SmallText, Container, ColoredText,
 } from './index';
 import { SubscriptionsListType } from '../../store/subscriptions/types';
+import makeRequest from '../../pages/api/makeRequest';
 
 export interface PricesCardProps {
     item: SubscriptionsListType
@@ -15,7 +17,9 @@ export interface PricesCardProps {
     name: string
     date: string
     isActive: boolean
+    // eslint-disable-next-line no-unused-vars
     onSetCurrentIndex: (value: number) => void
+    // eslint-disable-next-line no-unused-vars
     onSetContentIndex: (value: number) => void
     index: number;
     currentProductId: number
@@ -30,9 +34,7 @@ const PricesCard: React.FC<PricesCardProps> = ({
   isActive,
   onSetCurrentIndex,
   index,
-  item,
   onSetContentIndex,
-  currentProductId,
 }) => {
   const handleDate = () => {
     const newDate = new Date(+date * 1000);

@@ -8,6 +8,7 @@ const currentProductIdSlice = createSlice({
   initialState: { currentProductId },
   reducers: {
     setCurrentProductId(state, action: PayloadAction<SetCurrentProductId>) {
+      console.log(action.payload.id);
       state.currentProductId = action.payload.id;
     },
   },

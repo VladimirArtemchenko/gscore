@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-exports,import/no-cycle
 export { default } from './Subscriptions';
 export {
   Root,
@@ -13,5 +14,5 @@ export {
   BottomContainer,
   PrimaryButton,
   CodesContainer,
-  HoldForm,
+  ConfirmButton,
 } from './Subscriptions.styled';

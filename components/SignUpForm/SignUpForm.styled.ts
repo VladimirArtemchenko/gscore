@@ -2,14 +2,17 @@ import styled from 'styled-components';
 import { baseTheme } from '../../styles/theme';
 
 export const Root = styled.div`
-  width: 620px;
+  max-width: 620px;
   box-sizing: border-box;
   margin: 0 auto 0;
   padding: 0;
+  @media ${baseTheme.media.laptop} {
+    padding: 0 10px;
+  }
 `;
 export const Title = styled.h1`
   margin: 0 0 16px;
-  width: 638px;
+  max-width: 638px;
   height: 54px;
   font-family: 'THICCCBOI', serif;
   font-style: normal;
@@ -31,7 +34,8 @@ export const Form = styled.form`
 
 `;
 export const Input = styled.input`
-  width: 620px;
+  max-width: 620px;
+  width: 90%;
   height: 68px;
   border-radius: 5px;
   padding: 25px 0 25px 23px;

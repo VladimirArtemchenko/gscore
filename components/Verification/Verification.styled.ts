@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { baseTheme } from '../../styles/theme';
 
 export const Root = styled.div`
   box-sizing: border-box;
@@ -10,6 +11,11 @@ export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 32px auto 64px;
-  width: 620px;
-  height: 42px;
+  max-width: 620px;
+  min-height: 42px;
+  flex-wrap: wrap;
+  @media ${baseTheme.media.tablet} {
+    gap: 20px;
+    justify-content: space-around;
+  }
 `;

@@ -11,10 +11,8 @@ import {
   ListIcon,
   PrimaryButton,
   Container,
+  ListText,
 } from './index';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setCurrentProductId } from '../../store/currentProductId/reducer';
-import { setCurrentProductIndex } from '../../store/currentProductIndex/reducer';
 
 export interface PricesCardProps {
     price: string,
@@ -27,15 +25,12 @@ const PricesCard: React.FC<PricesCardProps> = ({
   price, sitesCount, id, index,
 }) => {
   const [isHovered, setHovered] = useState(false);
-  const dispatch = useAppDispatch();
-  const token = useAppSelector((state) => state.token.userInfo.token);
   const toggleHover = () => {
     setHovered(!isHovered);
   };
-
   const handleClick = () => {
-    dispatch(setCurrentProductId({ id }));
-    dispatch(setCurrentProductIndex({ index }));
+    sessionStorage.setItem('currentProductId', id.toString());
+    sessionStorage.setItem('currentIndex', index.toString());
   };
 
   return (
@@ -59,27 +54,27 @@ const PricesCard: React.FC<PricesCardProps> = ({
         <CardList>
           <CardListItem>
             {isHovered ? <ListIcon src="/CheckCircle.svg" /> : <ListIcon src="/CheckCircleInactive.svg" />}
-            <Text>
+            <ListText>
               All features for
               {sitesCount}
               {' '}
               sites
-            </Text>
+            </ListText>
           </CardListItem>
           <CardListItem>
             {isHovered ? <ListIcon src="/CheckCircle.svg" /> : <ListIcon src="/CheckCircleInactive.svg" />}
-            <Text>Special introductory pricing</Text>
+            <ListText>Special introductory pricing</ListText>
           </CardListItem>
           <CardListItem>
             {isHovered ? <ListIcon src="/CheckCircle.svg" /> : <ListIcon src="/CheckCircleInactive.svg" />}
-            <Text>Unlimited Pages and Keywords</Text>
+            <ListText>Unlimited Pages and Keywords</ListText>
           </CardListItem>
           <CardListItem>
             {isHovered ? <ListIcon src="/CheckCircle.svg" /> : <ListIcon src="/CheckCircleInactive.svg" />}
-            <Text>Billed annually</Text>
+            <ListText>Billed annually</ListText>
           </CardListItem>
         </CardList>
-        <Link href={token !== '' ? '/verification/checkout' : '/verification'}>
+        <Link href="/verification">
           <PrimaryButton onClick={handleClick} $isHovered={isHovered}>
             Get
             Gscore

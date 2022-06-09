@@ -1,8 +1,12 @@
 import React from 'react';
 import Subscribe from '../../components/Subscribe';
+import Layout from '../../components/Layout/Layout';
 
-const Verification = () => (
-  <Subscribe />
+const SubscribeGC = () => (
+  <Layout>
+    <Subscribe />
+  </Layout>
+
 );
 
-export default Verification;
+export default SubscribeGC;

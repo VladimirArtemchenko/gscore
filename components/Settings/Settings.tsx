@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/router';
 import {
   Root, Title, Form, Input, SubmitButton, SubTitle,
 } from './index';

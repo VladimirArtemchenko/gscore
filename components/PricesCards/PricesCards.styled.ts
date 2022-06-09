@@ -30,7 +30,7 @@ export const TextHome = styled(Text)`
 
 export const Title = styled.h1`
   margin: 16px auto 98px;
-  width: 638px;
+  max-width: 638px;
   height: 54px;
   font-family: 'THICCCBOI', serif;
   font-style: normal;
@@ -43,5 +43,12 @@ export const Title = styled.h1`
 export const Flex = styled.div`
   box-sizing: border-box;
   display: flex;
+  gap: 20px;
   justify-content: space-between;
+  flex-wrap: wrap;
+  @media ${baseTheme.media.laptopL} {
+    //row-gap: 20px;
+    justify-content: space-around;
+
+  }
 `;

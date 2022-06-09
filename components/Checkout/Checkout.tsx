@@ -12,28 +12,22 @@ import { payments } from '../../pages/api/rest/payments';
 import VerificationMenu from '../Verification';
 import { changeSubscribe } from '../../pages/api/rest/subscribe';
 import { toggleIsUpdateMode } from '../../store/isUpdateMode/reducer';
+import { setCurrentProductIndex } from '../../store/currentProductIndex/reducer';
+import { setCurrentProductId } from '../../store/currentProductId/reducer';
 
 const Checkout = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const isUpdateMode = useAppSelector((state) => state.isUpdateMode.isUpdateMode);
-  const currentProductId = useAppSelector(
-    (state) => state.currentProductId.currentProductId,
-  );
-  const currentProductIndex = useAppSelector(
-    (state) => state.currentProductIndex.currentProductIndex,
+  const currentProductId = Number(sessionStorage.getItem('currentProductId'));
+  const currentProductIndex = Number(sessionStorage.getItem('currentIndex'));
+  dispatch(setCurrentProductId({ id: Number(sessionStorage.getItem('currentProductId')) }));
+  dispatch(setCurrentProductIndex({ index: Number(sessionStorage.getItem('currentIndex')) }));
+  const currentProduct = useAppSelector(
+    (state) => state.productsList.productsList[currentProductIndex],
   );
   const currentSubscribeId = useAppSelector(
     (state) => state.currentSubscribeId.currentSubscribeId,
-  );
-  const currentPriceId = useAppSelector(
-    (state) => state.productsList.productsList[currentProductIndex].prices[0].id,
-  );
-  const price = useAppSelector(
-    (state) => (state.productsList.productsList[currentProductIndex].prices[0].price),
-  );
-  const license = useAppSelector(
-    (state) => (state.productsList.productsList[currentProductIndex].name),
   );
   const token = useAppSelector(
     (state) => (state.token.userInfo.token),
@@ -47,7 +41,7 @@ const Checkout = () => {
       });
       await router.push('/verification/subscribe');
     } else {
-      const response = await payments(token, { priceId: currentPriceId });
+      const response = await payments(token, { priceId: currentProduct.prices[0].id });
       if (response) {
         await router.push('/verification/subscribe');
       } else await router.push('/verification/login');
@@ -66,14 +60,14 @@ const Checkout = () => {
         </Flex>
         <SecondFlex>
           <ThinText>
-            {license}
+            {currentProduct.name}
             {' '}
             license
           </ThinText>
           <ThinText>
             $
             {' '}
-            {price}
+            {currentProduct.prices[0].price}
             <Basket src="/basket.svg" />
           </ThinText>
         </SecondFlex>
@@ -83,7 +77,7 @@ const Checkout = () => {
         <BigText>
           $
           {' '}
-          {price}
+          {currentProduct.prices[0].price}
         </BigText>
       </BottomFlex>
       <SubmitButton type="button" onClick={handlePurchase}>Purchase</SubmitButton>

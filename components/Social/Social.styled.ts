@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { baseTheme } from '../../styles/theme';
 
 export const Root = styled.div`
   box-sizing: border-box;
@@ -19,4 +20,7 @@ export const FooterSocialContainer = styled.div`
   box-sizing: border-box;
   gap: 16px;
   display: flex;
+  @media ${baseTheme.media.tablet} {
+    justify-content: center;
+  }
 `;

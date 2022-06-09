@@ -12,6 +12,11 @@ export const Title = styled.h1`
   font-size: 44px;
   line-height: 54px;
   color: ${baseTheme.colors.base};
+  @media ${baseTheme.media.tablet} {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+  }
 `;
 export const Container = styled.div`
   box-sizing: border-box;
@@ -21,6 +26,10 @@ export const Container = styled.div`
   flex-direction: column;
   border-radius: 12px;
   background: ${baseTheme.colors.secondary};
+  @media ${baseTheme.media.tablet} {
+    width: 318px;
+    height: 268px;
+  }
 `;
 export const Flex = styled(Container)`
   margin: 48px 0 0;
@@ -30,12 +39,20 @@ export const Flex = styled(Container)`
   justify-content: space-between;
   border-radius: 0;
   border-bottom: 1px solid #969696;
+  @media ${baseTheme.media.tablet} {
+    padding: 0 24px 0 16px;
+    margin: 32px 0 0;
+  }
 `;
 export const SecondFlex = styled(Flex)`
   margin: 32px 0 0;
   height: 26px;
   border-bottom: none;
   padding: 0 81px 0 32px;
+  @media ${baseTheme.media.tablet} {
+    padding: 0 50px 0 16px;
+    margin: 24px 0 0;
+  }
 `;
 export const BottomFlex = styled(Flex)`
   margin: 12px 32px 0;
@@ -43,6 +60,9 @@ export const BottomFlex = styled(Flex)`
   background: none;
   border: none;
   padding: 0;
+  @media ${baseTheme.media.tablet} {
+    margin: 4px 16px 0;
+  }
 `;
 export const Text = styled.div`
   font-family: 'THICCCBOI', sans-serif;
@@ -51,6 +71,12 @@ export const Text = styled.div`
   font-size: 22px;
   line-height: 28px;
   color: ${baseTheme.colors.base};
+  @media ${baseTheme.media.tablet} {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 30px;
+  }
+
 `;
 export const ColoredText = styled(Text) <{ $isActive: boolean }>`
   color: ${(props) => (props.$isActive ? baseTheme.colors.active : baseTheme.colors.success)};
@@ -59,6 +85,12 @@ export const SmallText = styled(Text)`
   font-weight: 500;
   font-size: 24px;
   line-height: 26px;
+  @media ${baseTheme.media.tablet} {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
 `;
 export const ThinText = styled(Text)`
   font-weight: 500;
@@ -86,4 +118,7 @@ export const SubmitButton = styled.button`
     opacity: 0.6;
   }
 
+  @media ${baseTheme.media.tablet} {
+    margin: 24px 16px 32px;
+  }
 `;

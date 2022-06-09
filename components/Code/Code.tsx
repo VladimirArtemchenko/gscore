@@ -13,7 +13,7 @@ import {
   Label,
   ColoredText,
   Domain,
-  LabelCheckbox,
+  TopColoredText,
 } from './index';
 import { CodesType } from '../../store/subscriptions/types';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -69,6 +69,8 @@ const Code: React.FC<PricesCardProps> = ({
   return (
     <Root>
       <Container>
+        <TopColoredText $color={code.status.toLocaleLowerCase()}>{code.status}</TopColoredText>
+
         {isHolded
           ? (
             <div>

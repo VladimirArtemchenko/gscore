@@ -11,12 +11,19 @@ export const baseTheme = {
     hold: 'rgba(255, 158, 44, 1)',
 
   },
-
+  size: {
+    desktop: 1440,
+    laptopL: 1280,
+    laptop: 1024,
+    tablet: 768,
+    mobileL: 425,
+  },
   media: {
-    extraLarge: '(max-width: 1140px)',
-    large: '(max-width: 960px)',
-    medium: '(max-width: 720px)',
-    small: '(max-width: 540px)',
+    desktop: '(max-width: 1440px)',
+    laptopL: '(max-width: 1280px)',
+    laptop: '(max-width: 1024px)',
+    tablet: '(max-width: 768px)',
+    mobileL: '(max-width: 425px)',
   },
 
   // in px

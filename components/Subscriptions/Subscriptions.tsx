@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { homedir } from 'os';
+import { number } from 'prop-types';
 import {
   Root,
   Title,
@@ -15,6 +16,7 @@ import {
   BottomContainer,
   PrimaryButton,
   CodesContainer,
+  ConfirmButton,
 
 } from './index';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -32,6 +34,7 @@ const Subscriptions = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [contentIndex, setContentIndex] = useState(0);
   const [isHolded, setIsHolded] = useState(false);
+
   useEffect(() => {
     setIsHolded((subscriptionsList[contentIndex].codes.length
             > subscriptionsList[contentIndex].product.sitesCount));
@@ -100,7 +103,11 @@ const Subscriptions = () => {
         </Cards>
       </Slider>
       <ButtonsContainer>
-        <LeftButton src="/arrow.svg" onClick={decrement} $isActive={currentIndex !== 1} />
+        <LeftButton
+          src="/arrow.svg"
+          onClick={decrement}
+          $isActive={currentIndex !== 1}
+        />
         <Text>
           {currentIndex}
           /
@@ -126,7 +133,7 @@ const Subscriptions = () => {
                 && (
                 <BottomContainer>
                   <BottomText>Select the domains you want to keep</BottomText>
-                  <PrimaryButton onClick={handleActivateCodes}>Confirm</PrimaryButton>
+                  <ConfirmButton onClick={handleActivateCodes}>Confirm</ConfirmButton>
                 </BottomContainer>
                 )}
     </Root>

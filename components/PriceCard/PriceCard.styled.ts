@@ -18,6 +18,11 @@ export const Container = styled.div <{ $isHovered: boolean }>`
   height: 612px;
   box-shadow: 0px 8px 28px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
+  @media ${baseTheme.media.laptop} {
+    width: 96%;
+    padding: 21px 24px;
+    margin: 0px auto;
+  }
 `;
 export const Price = styled.div`
   font-family: 'DM Sans', serif;
@@ -53,10 +58,11 @@ export const CardList = styled.div`
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 19px;
+  gap: 15px;
 `;
 export const CardListItem = styled.div`
   display: flex;
+  height: 26px;
   gap: 14px;
   padding: 0;
   margin: 0;
@@ -67,6 +73,7 @@ export const ListIcon = styled.img`
 `;
 export const PrimaryButton = styled.button <{ $isHovered: boolean }>`
   border: none;
+  margin: 35px 0 0;
   background: ${baseTheme.colors.base};
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
   border-radius: 6px;
@@ -93,4 +100,8 @@ export const Text = styled.div`
   line-height: 30px;
   text-align: center;
   color: ${baseTheme.colors.base};
+`;
+export const ListText = styled(Text)`
+  font-size: 18px;
+  line-height: 20px;
 `;

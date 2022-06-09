@@ -2,14 +2,17 @@ import styled from 'styled-components';
 import { baseTheme } from '../../styles/theme';
 
 export const Root = styled.div`
-  width: 620px;
+  max-width: 620px;
   box-sizing: border-box;
   margin: 0 auto 0;
   padding: 0;
+  @media ${baseTheme.media.tablet} {
+    padding: 0 10px 0;
+  }
 `;
 export const Title = styled.h1`
   margin: 0 0 32px;
-  width: 638px;
+  max-width: 638px;
   height: 54px;
   font-family: 'THICCCBOI', serif;
   font-style: normal;
@@ -20,12 +23,13 @@ export const Title = styled.h1`
 `;
 export const Container = styled.div`
   box-sizing: border-box;
-  width: 620px;
+  max-width: 620px;
   height: 232px;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
   background: ${baseTheme.colors.secondary};
+
 `;
 export const Flex = styled(Container)`
   margin: 48px 0 0;
