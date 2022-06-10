@@ -2,11 +2,6 @@ import styled from 'styled-components';
 import { baseTheme } from '../../styles/theme';
 
 export const Root = styled.div`
-  //overflow: hidden;
-  //padding: 0 0 0 87px;
-  //max-width: 1440px;
-  //box-sizing: border-box;
-  //margin: 0 auto 0;
 `;
 export const Title = styled.h1`
   margin: 0 0 32px;
@@ -17,50 +12,82 @@ export const Title = styled.h1`
   line-height: 54px;
   color: ${baseTheme.colors.base};
 `;
+
 export const Flex = styled.div`
   display: flex;
+  @media ${baseTheme.media.tablet} {
+    flex-direction: column;
+  }
 `;
+
 export const Form = styled.form`
   display: flex;
   width: 79%;
   justify-content: flex-start;
+  @media ${baseTheme.media.laptop} {
+    min-width: 70%;
+  }
+  @media ${baseTheme.media.tablet} {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const Container = styled(Flex)`
   min-width: 890px;
-  width: 100%;
   height: 153px;
   border-radius: 12px;
   background: ${baseTheme.colors.secondary};
+  @media ${baseTheme.media.laptop} {
+    min-width: 343px;
+  }
+  @media ${baseTheme.media.tablet} {
+    height: 338px;
+    padding: 24px 20px 32px;
+    position: relative;
+  }
 `;
 export const LicenseContainer = styled(Flex)`
   width: 30%;
   margin: 24px 28px 31px 0;
   flex-direction: column;
   background: ${baseTheme.colors.secondary};
+  @media ${baseTheme.media.tablet} {
+    margin: 0;
+    width: 100%;
+  }
 `;
 export const LinkContainer = styled(Flex)<{ $isInactive: boolean }>`
   margin: 24px 56px 31px 0;
-  width: ${(props) => (props.$isInactive ? '45%' : '62%')};
+  max-width: ${(props) => (props.$isInactive ? '45%' : '62%')};
+  width: 100%;
   flex-direction: column;
   border-radius: 5px;
   background: ${baseTheme.colors.secondary};
+  @media ${baseTheme.media.laptopL} {
+    margin: 24px 20px 31px 0;
+  }
+  @media ${baseTheme.media.tablet} {
+    margin: 0;
+    max-width: 100%;
+  }
 `;
 export const StatusContainer = styled(Flex)`
-  margin: 24px 0 31px 0;
+  margin: 24px 20px 31px 0;
   max-width: 20%;
   flex-direction: column;
   border-radius: 5px;
-  background-color: ${baseTheme.colors.secondary};
+  @media ${baseTheme.media.tablet} {
+    display: none;
 `;
 
-export const Checkbox = styled.input`
+export const Checkbox = styled.img`
   margin: 74px 48px 0 32px;
   width: 28px;
   height: 28px;
-  flex-direction: column;
-  border-radius: 7px;
-  color: ${baseTheme.colors.active};
+  @media ${baseTheme.media.tablet} {
+    margin: 14px 20px 0 0;
+  }
 `;
 export const LicenseCode = styled.input`
   background: #393939;
@@ -75,13 +102,24 @@ export const LicenseCode = styled.input`
   border-radius: 6px;
   padding: 0 90px 0 25px;
   max-width: 296px;
+  min-width: 146px;
   height: 68px;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @media ${baseTheme.media.tablet} {
+    max-width: 100%;
+    min-width: 303px;
+    padding: 0 97px 0 24px;
+  }
 `;
 export const Domain = styled(LicenseCode)`
   max-width: 620px;
   padding: 0 34px 0 24px;
+  min-width: 152px;
+  @media ${baseTheme.media.tablet} {
+    padding: 0 31px 0 24px;
+  }
 
 `;
 export const Label = styled.label`
@@ -92,13 +130,31 @@ export const Label = styled.label`
   line-height: 18px;
   color: ${baseTheme.colors.neutral};
   margin: 0 0 12px 0;
+  @media ${baseTheme.media.tablet} {
+    margin: 24px 0 12px;
+  }
 `;
+
+// @ts-ignore
 export const ColoredText = styled.div <{ $color: string }>`
   margin: 20px 0 0 0;
   font-weight: 700;
   font-size: 22px;
   line-height: 28px;
   color: ${(props) => (baseTheme.colors[props.$color])};
+`;
+export const TopColoredText = styled.div <{ $color: string }>`
+  display: none;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  color: ${(props) => (baseTheme.colors[props.$color])};
+  @media ${baseTheme.media.tablet} {
+    position: absolute;
+    display: flex;
+    top: 34px;
+    left: 68px;
+  }
 `;
 export const ActivateButton = styled.button`
   box-sizing: border-box;
@@ -120,19 +176,14 @@ export const ActivateButton = styled.button`
   :hover {
     opacity: 0.6;
   }
-`;
-export const LabelCheckbox = styled.label`
-  :before {
-    color: white;
-    display: inline-block;
-    border: 1px solid #000;
-    font-size: 20px;
-    line-height: 22px;
-    margin: -5px 5px 0 0;
-    height: 20px;
-    width: 20px;
-    text-align: center;
-    vertical-align: middle;
-    transition: color ease .3s;
+
+  @media ${baseTheme.media.laptopL} {
+    margin: 57px 20px 20px -2px;
+  }
+  @media ${baseTheme.media.tablet} {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 0;
   }
 `;

@@ -7,11 +7,15 @@ export const Root = styled.div`
   padding: 0;
 `;
 export const FooterList = styled.div`
-  width: 627px;
+  max-width: 627px;
   margin-top: 44px;
   box-sizing: border-box;
   display: flex;
   gap: 5px;
+  @media ${baseTheme.media.tablet} {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 export const FooterListLink = styled.a`
   cursor: pointer;
@@ -23,6 +27,9 @@ export const FooterListLink = styled.a`
   text-align: end;
   border-right: 2px solid #393939;
   padding-right: 5px;
+  @media ${baseTheme.media.tablet} {
+    border: none;
+  }
 
   :hover {
     opacity: 0.6;
@@ -30,6 +37,7 @@ export const FooterListLink = styled.a`
 
   &:last-child {
     border: none;
+
   }
 `;
 export const FooterListItem = styled.p`
@@ -41,4 +49,7 @@ export const FooterListItem = styled.p`
   color: ${baseTheme.colors.text};
   border-right: 2px solid #393939;
   text-align: end;
+  @media ${baseTheme.media.tablet} {
+    border: none;
+  }
 `;

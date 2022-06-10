@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/router';
 import {
   Root, Title, Form, Input, SubmitButton, SubTitle,
 } from './index';
@@ -22,21 +21,12 @@ const Settings = () => {
       email: '',
     },
   });
-
-  const onSubmit = (data: { email: string; username: string }) => {
-    (async () => {
-      await changeUserInfo(data, token)
-        .then((response) => {
-          if (response) {
-            dispatch(setUserInfo(response.data));
-            console.log(response.data);
-            reset();
-          }
-        })
-        .catch((error) => {
-          alert(error.response.data.message);
-        });
-    })();
+  const onSubmit = async (data: { email: string; username: string }) => {
+    const response = await changeUserInfo(data, token);
+    if (response) {
+      dispatch(setUserInfo(response.data));
+      reset();
+    }
   };
 
   return (

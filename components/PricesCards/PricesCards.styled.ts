@@ -30,7 +30,7 @@ export const TextHome = styled(Text)`
 
 export const Title = styled.h1`
   margin: 16px auto 98px;
-  width: 638px;
+  max-width: 638px;
   height: 54px;
   font-family: 'THICCCBOI', serif;
   font-style: normal;
@@ -41,7 +41,10 @@ export const Title = styled.h1`
   color: ${baseTheme.colors.base};
 `;
 export const Flex = styled.div`
+  padding: 0 86px 0;
   box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
+  justify-content: space-around;
+  flex-wrap: wrap;
 `;

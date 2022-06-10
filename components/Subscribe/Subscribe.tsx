@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
   Root,
@@ -14,35 +14,35 @@ import { getSubscriptions } from '../../store/subscriptions/reducer';
 const Subscribe = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const currentProductId = useAppSelector(
-    (state) => state.currentProductId.currentProductId,
+  const currentProductIndex = useAppSelector(
+    (state) => state.currentProductIndex.currentProductIndex,
   );
   const price = useAppSelector(
-    (state) => (state.productsList.productsList[currentProductId].prices[0].price),
+    (state) => (state.productsList.productsList[currentProductIndex].prices[0].price),
   );
   const license = useAppSelector(
-    (state) => (state.productsList.productsList[currentProductId].name),
+    (state) => (state.productsList.productsList[currentProductIndex].name),
   );
   const token = useAppSelector(
     (state) => (state.token.userInfo.token),
   );
 
-  const handleSubscribe = () => {
-    (async () => {
-      subscribe(token)
-        .then((response) => {
-          if (response) {
-            console.log(response.data);
-            dispatch(getSubscriptions(response.data));
-            if (response.data.length !== 0) {
-              router.push(`/mySubscription/${response.data[0].userId}`);
-            } else router.push('/mySubscription}');
-          }
-        })
-        .catch((error) => {
-          console.log(error.response.data.message);
-        });
-    })();
+  useEffect(() => {
+    if (localStorage.getItem('isLogin') === 'true') {
+      return;
+    }
+    alert('Пожалуйста зарегистрируйтесь');
+    router.push('/verification');
+  });
+
+  const handleSubscribe = async () => {
+    const response = await subscribe(token);
+    if (response) {
+      dispatch(getSubscriptions(response.data));
+      if (response.data.length !== 0) {
+        router.push(`/mySubscription/${response.data[0].userId}`);
+      } else router.push('/mySubscription}');
+    }
   };
 
   return (

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { bool } from 'prop-types';
+import React from 'react';
 import {
   Root,
   Flex,
@@ -15,9 +14,12 @@ export interface PricesCardProps {
     name: string
     date: string
     isActive: boolean
+    // eslint-disable-next-line no-unused-vars
     onSetCurrentIndex: (value: number) => void
+    // eslint-disable-next-line no-unused-vars
     onSetContentIndex: (value: number) => void
     index: number;
+    currentProductId: number
 
 }
 
@@ -29,7 +31,6 @@ const PricesCard: React.FC<PricesCardProps> = ({
   isActive,
   onSetCurrentIndex,
   index,
-  item,
   onSetContentIndex,
 }) => {
   const handleDate = () => {
@@ -50,10 +51,6 @@ const PricesCard: React.FC<PricesCardProps> = ({
         <Flex>
           <Text>
             Gscore
-            $
-            {item.productId}
-            $
-            {item.codes[0].subscribeId}
           </Text>
           <ColoredText
             $isActive={status.toLocaleLowerCase() === 'active'}

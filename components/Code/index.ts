@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-exports,import/no-cycle
 export { default } from './Code';
 export {
   Root,
@@ -14,5 +15,5 @@ export {
   Domain,
   Container,
   ColoredText,
-  LabelCheckbox,
+  TopColoredText,
 } from './Code.styled';

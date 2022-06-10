@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SubscriptionsListType } from './types';
-import { GetSubscriptions, ActivateCode } from './action-types';
+import { GetSubscriptions, ActivateCode, ManageCode } from './action-types';
 
 const subscriptionsList: SubscriptionsListType[] = [];
 
@@ -18,16 +18,18 @@ const productsListSlice = createSlice({
             code.status = action.payload.status;
             code.code = action.payload.code;
             code.origin = action.payload.origin;
-            console.log(action.payload.origin);
-            console.log(code.code);
-            console.log(action.payload.code);
           }
         });
+      });
+    },
+    manageCode(state, action: PayloadAction<ManageCode>) {
+      state.subscriptionsList.forEach((subscribe) => {
+        subscribe.codes = action.payload.codes;
       });
     },
   },
 });
 
-export const { getSubscriptions, activateCode } = productsListSlice.actions;
+export const { getSubscriptions, activateCode, manageCode } = productsListSlice.actions;
 
 export default productsListSlice.reducer;

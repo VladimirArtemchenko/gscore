@@ -4,6 +4,9 @@ import { baseTheme } from '../../styles/theme';
 export const Root = styled.div`
   box-sizing: border-box;
   padding: 32px 87px;
+  @media ${baseTheme.media.laptop} {
+    padding: 73px 16px;
+  }
 `;
 export const Title = styled.h1`
   margin: 0 0 48px;
@@ -28,7 +31,7 @@ export const Form = styled.form`
   flex-direction: column;
 `;
 export const Input = styled.input`
-  width: 620px;
+  max-width: 620px;
   height: 68px;
   border-radius: 5px;
   padding: 25px 0 25px 23px;
@@ -58,4 +61,7 @@ export const SubmitButton = styled.button`
   line-height: 18px;
   text-align: center;
   border: none;
+  @media ${baseTheme.media.laptop} {
+    margin: 48px auto;
+  }
 `;

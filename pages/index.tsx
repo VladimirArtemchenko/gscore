@@ -5,9 +5,8 @@ import { ProductsListType } from '../store/prices/types';
 
 export async function getStaticProps() {
   const response = await products();
-  console.log(response.data);
   return {
-    props: { productsList: response.data },
+    props: { productsList: response?.data },
   };
 }
 
@@ -16,9 +15,7 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ productsList }) => (
-
   <PricesCards productsList={productsList} />
-
 );
 
 export default Home;

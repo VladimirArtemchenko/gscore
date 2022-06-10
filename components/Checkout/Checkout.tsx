@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
   Root,
@@ -7,42 +7,52 @@ import {
   BottomFlex,
   SubmitButton, Text, ThinText, SecondFlex, BigText, Basket, Container,
 } from './index';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { payments } from '../../pages/api/rest/payments';
 import VerificationMenu from '../Verification';
+import { changeSubscribe } from '../../pages/api/rest/subscribe';
+import { toggleIsUpdateMode } from '../../store/isUpdateMode/reducer';
+import { setCurrentProductIndex } from '../../store/currentProductIndex/reducer';
+import { setCurrentProductId } from '../../store/currentProductId/reducer';
 
 const Checkout = () => {
   const router = useRouter();
-  const currentProductId = useAppSelector(
-    (state) => state.currentProductId.currentProductId,
+  const dispatch = useAppDispatch();
+  const isUpdateMode = useAppSelector((state) => state.isUpdateMode.isUpdateMode);
+  const currentProductId = Number(sessionStorage.getItem('currentProductId'));
+  const currentProductIndex = Number(sessionStorage.getItem('currentIndex'));
+  dispatch(setCurrentProductId({ id: Number(sessionStorage.getItem('currentProductId')) }));
+  dispatch(setCurrentProductIndex({ index: Number(sessionStorage.getItem('currentIndex')) }));
+  const currentProduct = useAppSelector(
+    (state) => state.productsList.productsList[currentProductIndex],
   );
-  const currentPriceId = useAppSelector(
-    (state) => state.productsList.productsList[currentProductId].prices[0].id,
-  );
-  const price = useAppSelector(
-    (state) => (state.productsList.productsList[currentProductId].prices[0].price),
-  );
-  const license = useAppSelector(
-    (state) => (state.productsList.productsList[currentProductId].name),
+  const currentSubscribeId = useAppSelector(
+    (state) => state.currentSubscribeId.currentSubscribeId,
   );
   const token = useAppSelector(
     (state) => (state.token.userInfo.token),
   );
-
-  const handlePurchase = () => {
-    payments(token, { priceId: currentPriceId })
-      .then((response) => {
-        if (response) {
-          console.log(response);
-          router.push('/verification/subscribe');
-        }
-      })
-      .catch((error) => {
-        alert(error.response.data.message);
-        router.push('/verification/login');
+  useEffect(() => {
+    if (localStorage.getItem('isLogin') === 'true') {
+      return;
+    }
+    alert('Пожалуйста зарегистрируйтесь');
+    router.push('/verification');
+  });
+  const handlePurchase = async () => {
+    if (isUpdateMode) {
+      await changeSubscribe(token, {
+        productId: currentProductId,
+        subscribeId: currentSubscribeId,
       });
-
-    router.push('/verification/subscribe');
+      await router.push('/verification/subscribe');
+    } else {
+      const response = await payments(token, { priceId: currentProduct.prices[0].id });
+      if (response) {
+        await router.push('/verification/subscribe');
+      } else await router.push('/verification/login');
+    }
+    dispatch(toggleIsUpdateMode({ isUpdateMode: false }));
   };
 
   return (
@@ -56,14 +66,14 @@ const Checkout = () => {
         </Flex>
         <SecondFlex>
           <ThinText>
-            {license}
+            {currentProduct.name}
             {' '}
             license
           </ThinText>
           <ThinText>
             $
             {' '}
-            {price}
+            {currentProduct.prices[0].price}
             <Basket src="/basket.svg" />
           </ThinText>
         </SecondFlex>
@@ -73,7 +83,7 @@ const Checkout = () => {
         <BigText>
           $
           {' '}
-          {price}
+          {currentProduct.prices[0].price}
         </BigText>
       </BottomFlex>
       <SubmitButton type="button" onClick={handlePurchase}>Purchase</SubmitButton>

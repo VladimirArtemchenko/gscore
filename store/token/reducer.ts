@@ -19,6 +19,7 @@ const tokenSlice = createSlice({
     },
     logout(state) {
       state.userInfo = { token: '', user: { id: null, email: '', username: '' } };
+      localStorage.setItem('isLogin', '');
     },
   },
 });

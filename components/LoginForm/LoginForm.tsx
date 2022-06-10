@@ -8,6 +8,8 @@ import { signIn } from '../../pages/api/rest/users';
 import { useAppDispatch } from '../../hooks';
 import { setToken } from '../../store/token/reducer';
 import VerificationMenu from '../Verification';
+import { subscribe } from '../../pages/api/rest/subscribe';
+import { getSubscriptions } from '../../store/subscriptions/reducer';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -21,21 +23,18 @@ const LoginForm = () => {
     },
   });
 
-  const onSubmit = (data: { email: string; password: string }) => {
-    (async () => {
-      await signIn(data)
-        .then((response) => {
-          if (response) {
-            dispatch(setToken(response.data));
-            console.log(response.data.token);
-            reset();
-            router.push('/verification/checkout');
-          }
-        })
-        .catch((error) => {
-          alert(error.response.data.message);
-        });
-    })();
+  const onSubmit = async (data: { email: string; password: string }) => {
+    const response = await signIn(data);
+    if (response) {
+      dispatch(setToken(response.data));
+      localStorage.setItem('isLogin', 'true');
+      const subscriptionsList = await subscribe(response.data.token);
+      if (subscriptionsList) {
+        dispatch(getSubscriptions(subscriptionsList.data));
+        reset();
+      }
+      await router.push('/verification/checkout');
+    }
   };
 
   return (

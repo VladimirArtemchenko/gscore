@@ -1,8 +1,12 @@
 import React from 'react';
 import NoSubscriptions from '../../components/NoSubscriptions';
+import Layout from '../../components/Layout/Layout';
 
 const NoSibescribe = () => (
-  <NoSubscriptions />
+  <Layout>
+    <NoSubscriptions />
+  </Layout>
+
 );
 
 export default NoSibescribe;

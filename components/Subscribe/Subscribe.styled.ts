@@ -2,10 +2,13 @@ import styled from 'styled-components';
 import { baseTheme } from '../../styles/theme';
 
 export const Root = styled.div`
-  width: 620px;
+  max-width: 620px;
   box-sizing: border-box;
   margin: 0 auto 0;
   padding: 0;
+  @media ${baseTheme.media.tablet} {
+    padding: 0 10px 0;
+  }
 `;
 export const Title = styled.h1`
   margin: 32px 0 16px;
@@ -18,7 +21,7 @@ export const Title = styled.h1`
 `;
 export const Container = styled.div`
   box-sizing: border-box;
-  width: 620px;
+  max-width: 620px;
   height: 232px;
   display: flex;
   flex-direction: column;
@@ -83,5 +86,10 @@ export const SubmitButton = styled.button`
 
   :hover {
     opacity: 0.6;
+  }
+
+  @media ${baseTheme.media.tablet} {
+    width: 200px;
+    margin: 48px auto 390px;
   }
 `;

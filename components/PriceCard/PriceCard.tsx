@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
   Root,
   CardLine,
@@ -11,28 +12,31 @@ import {
   ListIcon,
   PrimaryButton,
   Container,
+  ListText,
 } from './index';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setCurrentProductId } from '../../store/currentProductId/reducer';
 
 export interface PricesCardProps {
     price: string,
     sitesCount: number
     id: number
+    index: number
 }
 
-const PricesCard: React.FC<PricesCardProps> = ({ price, sitesCount, id }) => {
+const PricesCard: React.FC<PricesCardProps> = ({
+  price, sitesCount, id, index,
+}) => {
   const [isHovered, setHovered] = useState(false);
-  const dispatch = useAppDispatch();
-  const token = useAppSelector((state) => state.token.userInfo.token);
+  const [isLogin, setIsLogin] = useState('');
   const toggleHover = () => {
     setHovered(!isHovered);
   };
-
+  const router = useRouter();
   const handleClick = () => {
-    const productID = id;
-    dispatch(setCurrentProductId({ id }));
-    console.log(productID);
+    console.log(localStorage.getItem('isLogin'));
+    setIsLogin(String(localStorage.getItem('isLogin')));
+    router.push(String(localStorage.getItem('isLogin')) === 'true' ? '/verification/checkout' : '/verification');
+    sessionStorage.setItem('currentProductId', id.toString());
+    sessionStorage.setItem('currentIndex', index.toString());
   };
 
   return (
@@ -56,32 +60,32 @@ const PricesCard: React.FC<PricesCardProps> = ({ price, sitesCount, id }) => {
         <CardList>
           <CardListItem>
             {isHovered ? <ListIcon src="/CheckCircle.svg" /> : <ListIcon src="/CheckCircleInactive.svg" />}
-            <Text>
+            <ListText>
               All features for
               {sitesCount}
               {' '}
               sites
-            </Text>
+            </ListText>
           </CardListItem>
           <CardListItem>
             {isHovered ? <ListIcon src="/CheckCircle.svg" /> : <ListIcon src="/CheckCircleInactive.svg" />}
-            <Text>Special introductory pricing</Text>
+            <ListText>Special introductory pricing</ListText>
           </CardListItem>
           <CardListItem>
             {isHovered ? <ListIcon src="/CheckCircle.svg" /> : <ListIcon src="/CheckCircleInactive.svg" />}
-            <Text>Unlimited Pages and Keywords</Text>
+            <ListText>Unlimited Pages and Keywords</ListText>
           </CardListItem>
           <CardListItem>
             {isHovered ? <ListIcon src="/CheckCircle.svg" /> : <ListIcon src="/CheckCircleInactive.svg" />}
-            <Text>Billed annually</Text>
+            <ListText>Billed annually</ListText>
           </CardListItem>
         </CardList>
-        <Link href={token !== '' ? '/verification/checkout' : '/verification'}>
-          <PrimaryButton onClick={handleClick} $isHovered={isHovered}>
-            Get
-            Gscore
-          </PrimaryButton>
-        </Link>
+        {/* <Link href={}> */}
+        <PrimaryButton onClick={handleClick} $isHovered={isHovered}>
+          Get
+          Gscore
+        </PrimaryButton>
+        {/* </Link> */}
       </Container>
     </Root>
 

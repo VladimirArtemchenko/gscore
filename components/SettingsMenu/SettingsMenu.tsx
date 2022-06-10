@@ -17,7 +17,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ currentId }) => {
   return (
     <Root>
       {settingsItemList.map(({ id, name, link }) => (
-        <SettingsMenuItem id={id} label={name} link={link} currentId={currentId} />
+        <SettingsMenuItem key={id} id={id} label={name} link={link} currentId={currentId} />
       ))}
     </Root>
   );

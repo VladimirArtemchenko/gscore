@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
 import {
   Root, Title, Text, Form, Input, SubmitButton, BottomText, Flex, ColloredText,
 } from './index';
@@ -10,6 +9,8 @@ import { signIn, signUp } from '../../pages/api/rest/users';
 import { useAppDispatch } from '../../hooks';
 import { setToken } from '../../store/token/reducer';
 import VerificationMenu from '../Verification';
+import { products } from '../../pages/api/rest/products';
+import { getProducts } from '../../store/prices/reducer';
 
 const SignUpForm = () => {
   const dispatch = useAppDispatch();
@@ -24,23 +25,26 @@ const SignUpForm = () => {
     },
   });
 
-  const onSubmit = (data: { username: string; email: string; password: string }) => {
-    (async () => {
-      await signUp(data)
-        .then((response) => {
-          if (response) {
-            signIn({ email: data.email, password: data.password })
-              .then((res) => {
-                dispatch(setToken(res.data));
-                router.push('/verification/checkout');
-              });
-            reset();
-          }
-        })
-        .catch((error) => {
-          alert(error.response.data.message);
-        });
-    })();
+  useEffect(() => {
+    const getData = async () => {
+      const productsList = await products();
+      if (productsList) {
+        dispatch(getProducts(productsList.data));
+      }
+    };
+    getData();
+  }, []);
+
+  const onSubmit = async (data: { username: string; email: string; password: string }) => {
+    const response = await signUp(data);
+    if (response) {
+      const userInfo = await signIn({ email: data.email, password: data.password });
+      if (userInfo) {
+        dispatch(setToken(userInfo.data));
+        await router.push('/verification/checkout');
+        reset();
+      }
+    }
   };
 
   return (
